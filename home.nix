@@ -61,7 +61,6 @@
     pkgs.cargo
     pkgs.rustc
 
-
     # better, smarter, cd
     pkgs.zoxide
 
@@ -74,6 +73,8 @@
     pkgs.bat
     # du, written in rust, more powerful
     pkgs.dust
+
+    pkgs.oh-my-zsh
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -106,9 +107,9 @@
     # '';
   };
 
-  home.shellAliases = {
-    cdd = "zoxide";
-  };
+  home.shellAliases = { };
+
+  home.shell.enableZshIntegration = true;
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -128,8 +129,29 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    TERM = "xterm-256color";
+    DISABLE_UNTRACKED_FILES_DIRTY = "true";
   };
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+
+  programs = {
+    # Let Home Manager install and manage itself.
+    home-manager = {
+      enable = true;
+    };
+    zsh = {
+      enable = true;
+      oh-my-zsh = {
+        enable = true;
+        plugins = [ "git" "direnv" ];
+        theme = "robbyrussell";
+      };
+    };
+    zoxide = {
+      enable = true;
+    };
+    fzf.enable = true;
+  };
+
+
 }

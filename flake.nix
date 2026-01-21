@@ -36,7 +36,8 @@
       homeConfigurations."zfaria" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
-        modules = [ ./home.nix ];
+        modules = [ ./work.nix ];
+
 
         extraSpecialArgs = {
           user = "zfaria";
