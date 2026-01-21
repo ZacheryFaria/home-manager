@@ -38,6 +38,9 @@
     pkgs.wget
     pkgs.watchman
 
+    # nix
+    pkgs.nixd
+
     # git
     pkgs.git
     pkgs.git-lfs
@@ -91,6 +94,8 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+
+    ".config/kitty/kitty.conf".source = ./dots/kitty.conf;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
