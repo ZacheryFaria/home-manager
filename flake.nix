@@ -26,6 +26,22 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+        extraSpecialArgs = {
+
+          user = "zach";
+          homeDir = "/Users/zach";
+        };
+      };
+
+      homeConfigurations."zfaria" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
+        modules = [ ./home.nix ];
+
+        extraSpecialArgs = {
+          user = "zfaria";
+          homeDir = "/Users/zfaria";
+        };
       };
     };
 }

@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user, homeDir, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "zach";
-  home.homeDirectory = "/Users/zach";
+  home.username = user;
+  home.homeDirectory = homeDir;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -37,6 +37,8 @@
     pkgs.neovim
     pkgs.wget
     pkgs.watchman
+    pkgs.tmux
+    pkgs.fzf
 
     # nix
     pkgs.nixd
