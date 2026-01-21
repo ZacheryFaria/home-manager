@@ -18,26 +18,57 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+    # self explanatory packages that are useful
     pkgs.jq
     pkgs.yq
-    pkgs.ranger
+    pkgs.nmap
     pkgs.cloc
     pkgs.ripgrep
     pkgs.fd
     pkgs.htop
     pkgs.btop
     pkgs.jj
-    pkgs.zoxide
     pkgs.rsync
     pkgs.glog
     pkgs.awscli
     pkgs.cmake
     pkgs.direnv
     pkgs.lazygit
+    pkgs.neovim
+    pkgs.wget
+    pkgs.watchman
+
+    # git
+    pkgs.git
+    pkgs.git-lfs
+    pkgs.difftastic
+    # github cli
+    pkgs.gh
+
+    # python
     pkgs.uv
+    pkgs.python313
+
+    # go
+    pkgs.go
+
+    # rust
+    pkgs.cargo
+    pkgs.rustc
+
+
+    # better, smarter, cd
+    pkgs.zoxide
+
+    # 
+    pkgs.openapi-generator-cli
+
+    # fast-node-manager (better nvm)
+    pkgs.fnm
+    # cat with syntax
+    pkgs.bat
+    # du, written in rust, more powerful
+    pkgs.dust
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
