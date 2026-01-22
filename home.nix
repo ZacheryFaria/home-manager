@@ -67,6 +67,9 @@
     pkgs.uv
     pkgs.python313
 
+    # node
+    pkgs.nodejs_24
+
     # go
     pkgs.go
 
@@ -189,6 +192,8 @@
         };
       };
     };
+
+    fzf.enable = true;
 
   };
 

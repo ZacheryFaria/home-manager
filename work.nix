@@ -29,7 +29,6 @@
     pkgs.eslint
     pkgs.buf
     pkgs.kubectl
-    pkgs.nodejs_24
     pkgs.docker-credential-helpers
   ];
 
