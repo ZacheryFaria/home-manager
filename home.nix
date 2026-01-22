@@ -40,6 +40,10 @@
     pkgs.tmux
     pkgs.fzf
 
+    # docker
+    pkgs.colima
+    pkgs.docker
+
     # claude
     pkgs.claude-code
 
@@ -144,11 +148,21 @@
     };
     zsh = {
       enable = true;
-      oh-my-zsh = {
-        enable = true;
-        plugins = [ "git" "direnv" ];
-        theme = "robbyrussell";
-      };
+      initContent = ''
+        eval "$(direnv hook zsh)"
+      '';
+
+      plugins = [
+        {
+          name = "pure";
+          src = pkgs.fetchFromGitHub {
+            owner = "sindresorhus";
+            repo = "pure";
+            rev = "v1.26.0"; # Use the latest version tag
+            sha256 = "1gah16673pzkbhkkiwh3rhcxzdkdnfy1z414r8qnl19sd0zv3501";
+          };
+        }
+      ];
     };
     zoxide = {
       enable = true;
