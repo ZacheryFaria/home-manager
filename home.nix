@@ -122,6 +122,7 @@
 
   home.shellAliases = {
     ls = "ls --color=auto";
+    lg = "lazygit";
   };
 
   home.shell.enableZshIntegration = true;
@@ -156,6 +157,9 @@
       enable = true;
       initContent = ''
         eval "$(direnv hook zsh)"
+        bindkey -e
+        bindkey '^[[1;3D' backward-word   # Alt/Option + Left Arrow
+        bindkey '^[[1;3C' forward-word    # Alt/Option + Right Arrow
       '';
 
       plugins = [
