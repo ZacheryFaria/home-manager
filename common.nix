@@ -1,5 +1,5 @@
+# common packages which may be installed on a non-macbook machine (i.e., a vps/linux box)
 {
-  config,
   pkgs,
   user,
   homeDir,

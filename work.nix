@@ -1,13 +1,10 @@
 {
-  config,
   pkgs,
-  user,
-  homeDir,
   ...
 }:
 
 {
-  imports = [ ./home.nix ];
+  imports = [ ./macbook.nix ];
 
   home.shellAliases = {
     ib = "pnpm -r i && bazel configure";

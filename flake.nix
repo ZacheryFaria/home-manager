@@ -18,7 +18,7 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [ ./macbook.nix ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
@@ -43,7 +43,7 @@
       homeConfigurations."fedora" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-        modules = [ ./home.nix ];
+        modules = [ ./common.nix ];
 
         extraSpecialArgs = {
           user = "zach";
