@@ -27,7 +27,6 @@
     pkgs.fd
     pkgs.htop
     pkgs.btop
-    pkgs.jj
     pkgs.rsync
     pkgs.glog
     pkgs.awscli2
