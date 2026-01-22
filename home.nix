@@ -135,7 +135,6 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     TERM = "xterm-256color";
-    DISABLE_UNTRACKED_FILES_DIRTY = "true";
   };
 
 
