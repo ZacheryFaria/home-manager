@@ -13,6 +13,7 @@
   programs.zsh.initContent = ''
     source /Users/zfaria/.kube-tools/kubech
     source /Users/zfaria/.secrets.sh
+    source /Users/zfaria/.aliases.sh
   '';
 
   home.sessionPath = [
