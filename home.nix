@@ -73,14 +73,11 @@
     # 
     pkgs.openapi-generator-cli
 
-    # fast-node-manager (better nvm)
-    pkgs.fnm
     # cat with syntax
     pkgs.bat
+
     # du, written in rust, more powerful
     pkgs.dust
-
-    pkgs.oh-my-zsh
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -113,7 +110,9 @@
     # '';
   };
 
-  home.shellAliases = { };
+  home.shellAliases = {
+    ls = "ls --color=auto";
+  };
 
   home.shell.enableZshIntegration = true;
 
