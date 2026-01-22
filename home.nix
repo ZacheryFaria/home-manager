@@ -1,4 +1,10 @@
-{ config, pkgs, user, homeDir, ... }:
+{
+  config,
+  pkgs,
+  user,
+  homeDir,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -48,6 +54,7 @@
 
     # nix
     pkgs.nixd
+    pkgs.nixfmt
 
     # git
     pkgs.git
@@ -70,7 +77,7 @@
     # better, smarter, cd
     pkgs.zoxide
 
-    # 
+    #
     pkgs.openapi-generator-cli
 
     # cat with syntax
@@ -136,7 +143,6 @@
     EDITOR = "nvim";
     TERM = "xterm-256color";
   };
-
 
   programs = {
     # Let Home Manager install and manage itself.

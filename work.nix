@@ -1,4 +1,10 @@
-{ config, pkgs, user, homeDir, ... }:
+{
+  config,
+  pkgs,
+  user,
+  homeDir,
+  ...
+}:
 
 {
   imports = [ ./home.nix ];
@@ -26,7 +32,6 @@
     pkgs.nodejs_24
     pkgs.docker-credential-helpers
   ];
-
 
   home.sessionVariables = {
     NIX_PATH = "nixpkgs=$HOME/sources/anduril-nixpkgs";

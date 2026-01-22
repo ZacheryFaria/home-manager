@@ -34,7 +34,6 @@
 
         modules = [ ./work.nix ];
 
-
         extraSpecialArgs = {
           user = "zfaria";
           homeDir = "/Users/zfaria";
@@ -45,7 +44,6 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
         modules = [ ./home.nix ];
-
 
         extraSpecialArgs = {
           user = "zach";
