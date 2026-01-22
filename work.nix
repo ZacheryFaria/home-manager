@@ -26,9 +26,6 @@
     pkgs.nodejs_24
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
   home.sessionVariables = {
     NIX_PATH = "nixpkgs=$HOME/sources/anduril-nixpkgs";
