@@ -30,7 +30,7 @@
     pkgs.jj
     pkgs.rsync
     pkgs.glog
-    pkgs.awscli
+    pkgs.awscli2
     pkgs.cmake
     pkgs.direnv
     pkgs.lazygit
@@ -39,6 +39,9 @@
     pkgs.watchman
     pkgs.tmux
     pkgs.fzf
+
+    # claude
+    pkgs.claude-code
 
     # nix
     pkgs.nixd
@@ -149,6 +152,9 @@
     };
     zoxide = {
       enable = true;
+      options = [
+        "--cmd cd"
+      ];
     };
     fzf.enable = true;
   };

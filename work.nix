@@ -7,7 +7,7 @@
     ib = "pnpm -r i && bazel configure";
   };
 
-  programs.zsh.initExtra = ''
+  programs.zsh.initContent = ''
     source /Users/zfaria/.kube-tools/kubech
     source /Users/zfaria/.secrets.sh
   '';
@@ -23,7 +23,12 @@
     pkgs.eslint
     pkgs.buf
     pkgs.kubectl
+    pkgs.nodejs_24
   ];
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   home.sessionVariables = {
     NIX_PATH = "nixpkgs=$HOME/sources/anduril-nixpkgs";
