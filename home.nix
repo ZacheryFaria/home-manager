@@ -167,7 +167,23 @@
         "--cmd cd"
       ];
     };
-    fzf.enable = true;
+
+    git = {
+      enable = true;
+
+      settings = {
+        user.name = "Zachery Faria";
+        user.email = "zacheryfaria@gmail.com";
+        push.autoSetupRemote = true;
+        alias = {
+          ci = "commit";
+          co = "checkout";
+          s = "status -sb";
+          lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
+        };
+      };
+    };
+
   };
 
   nixpkgs.config = {
