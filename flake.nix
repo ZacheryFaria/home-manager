@@ -12,13 +12,9 @@
 
   outputs =
     { nixpkgs, home-manager, ... }:
-    let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
     {
       homeConfigurations."zach" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
@@ -34,7 +30,7 @@
       };
 
       homeConfigurations."zfaria" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
         modules = [ ./work.nix ];
 
@@ -42,6 +38,18 @@
         extraSpecialArgs = {
           user = "zfaria";
           homeDir = "/Users/zfaria";
+        };
+      };
+
+      homeConfigurations."fedora" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+        modules = [ ./home.nix ];
+
+
+        extraSpecialArgs = {
+          user = "zach";
+          homeDir = "/home/zach";
         };
       };
     };
