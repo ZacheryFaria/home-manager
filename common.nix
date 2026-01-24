@@ -160,6 +160,8 @@
         bindkey -e
         bindkey '^[[1;3D' backward-word   # Alt/Option + Left Arrow
         bindkey '^[[1;3C' forward-word    # Alt/Option + Right Arrow
+
+        [[ $- == *i* ]] && [ -z "$DISABLE_ZOXIDE" ] && eval "$(zoxide init --cmd cd zsh)"
       '';
 
       plugins = [
@@ -172,12 +174,6 @@
             sha256 = "1gah16673pzkbhkkiwh3rhcxzdkdnfy1z414r8qnl19sd0zv3501";
           };
         }
-      ];
-    };
-    zoxide = {
-      enable = true;
-      options = [
-        "--cmd cd"
       ];
     };
 
