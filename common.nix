@@ -44,6 +44,7 @@
     pkgs.watchman
     pkgs.tmux
     pkgs.fzf
+    pkgs.tree
 
     # docker
     pkgs.colima
