@@ -147,6 +147,8 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     TERM = "xterm-256color";
+    # hack to disable the exceutino time for pure (https://github.com/sindresorhus/pure/issues/496)
+    PURE_CMD_MAX_EXEC_TIME = "1000000000000000000";
   };
 
   programs = {
