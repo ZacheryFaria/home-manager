@@ -28,6 +28,7 @@
     pkgs.buf
     pkgs.kubectl
     pkgs.docker-credential-helpers
+    pkgs.expect
   ];
 
   home.sessionVariables = {
