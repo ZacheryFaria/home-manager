@@ -53,7 +53,6 @@
     # claude
     pkgs.claude-code
     pkgs.claude-monitor
-    pkgs.beads
 
     # nix
     pkgs.nixd
