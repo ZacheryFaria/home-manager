@@ -1,6 +1,7 @@
 # common packages which may be installed on a non-macbook machine (i.e., a vps/linux box)
 {
   pkgs,
+  claude-code,
   user,
   homeDir,
   ...
@@ -51,7 +52,6 @@
     pkgs.docker
 
     # claude
-    pkgs.claude-code
     pkgs.claude-monitor
 
     # nix
