@@ -1,5 +1,6 @@
 # used for any macbook (home, work, etc)
 {
+  user,
   pkgs,
   ...
 }:
@@ -9,5 +10,10 @@
 
   home.packages = [
     pkgs.kitty
+  ];
+
+  home.sessionPath = [
+    "/Users/${user}/.local/bin"
+    "/Users/${user}/bin"
   ];
 }

@@ -16,11 +16,6 @@
     source /Users/zfaria/.aliases.sh
   '';
 
-  home.sessionPath = [
-    "/Users/zfaria/.local/bin"
-    "/Users/zfaria/bin"
-  ];
-
   home.packages = [
     pkgs.grpcurl
     pkgs.golangci-lint
