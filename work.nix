@@ -21,6 +21,8 @@
     pkgs.golangci-lint
     pkgs.eslint
     pkgs.buf
+    pkgs.icu
+    pkgs.icu.dev
     pkgs.kubectl
     pkgs.docker-credential-helpers
     pkgs.expect
@@ -28,5 +30,8 @@
 
   home.sessionVariables = {
     NIX_PATH = "nixpkgs=$HOME/sources/anduril-nixpkgs";
+    CGO_CFLAGS = "-I$HOME/.nix-profile/include";
+    CGO_CXXFLAGS = "-I$HOME/.nix-profile/include";
+    CGO_LDFLAGS = "-L$HOME/.nix-profile/lib";
   };
 }

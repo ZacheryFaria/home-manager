@@ -152,6 +152,10 @@
     PURE_CMD_MAX_EXEC_TIME = "1000000000000000000";
   };
 
+  home.sessionPath = [
+    "${homeDir}/go/bin"
+  ];
+
   programs = {
     # Let Home Manager install and manage itself.
     home-manager = {
