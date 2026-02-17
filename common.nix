@@ -53,6 +53,8 @@
 
     # claude
     pkgs.claude-monitor
+    pkgs.dolt
+    pkgs.icu
 
     # nix
     pkgs.nixd
