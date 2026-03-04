@@ -51,9 +51,6 @@
     pkgs.colima
     pkgs.docker
 
-    # claude
-    pkgs.claude-monitor
-
     # nix
     pkgs.nixd
     pkgs.nixfmt
@@ -125,6 +122,7 @@
   home.shellAliases = {
     ls = "ls --color=auto";
     lg = "lazygit";
+    ccusage = "npx ccusage";
   };
 
   home.shell.enableZshIntegration = true;
