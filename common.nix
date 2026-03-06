@@ -26,6 +26,7 @@
   # environment.
   home.packages = [
     # self explanatory packages that are useful
+    pkgs.jujutsu
     pkgs.jq
     pkgs.yq
     pkgs.nmap
