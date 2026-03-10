@@ -2,7 +2,7 @@
   lib,
   stdenvNoCC,
   fetchurl,
-  undmg,
+  _7zz,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -14,7 +14,14 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     sha256 = "a113c6a43c18e323dfa91f2e39f19e20811cbac4605b639b99f9e3a9f338a528";
   };
 
-  nativeBuildInputs = [ undmg ];
+  nativeBuildInputs = [ _7zz ];
+
+  unpackPhase = ''
+    runHook preUnpack
+    7zz x $src
+    runHook postUnpack
+  '';
+
   sourceRoot = ".";
 
   installPhase = ''
