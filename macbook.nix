@@ -9,6 +9,7 @@
   imports = [ ./common.nix ];
 
   home.packages = [
+    (pkgs.callPackage ./pkgs/cmux.nix {})
   ];
 
   home.sessionPath = [
