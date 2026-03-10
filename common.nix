@@ -8,6 +8,7 @@
 }:
 
 {
+  imports = [ ./neovim.nix ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
@@ -41,7 +42,6 @@
     pkgs.cmake
     pkgs.direnv
     pkgs.lazygit
-    pkgs.neovim
     pkgs.wget
     pkgs.watchman
     pkgs.tmux
@@ -53,7 +53,6 @@
     pkgs.docker
 
     # nix
-    pkgs.nixd
     pkgs.nixfmt
 
     # git
@@ -143,7 +142,6 @@
   #  /etc/profiles/per-user/zach/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
     TERM = "xterm-256color";
     # hack to disable the exceutino time for pure (https://github.com/sindresorhus/pure/issues/496)
     PURE_CMD_MAX_EXEC_TIME = "1000000000000000000";
