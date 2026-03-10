@@ -9,7 +9,6 @@
   imports = [ ./common.nix ];
 
   home.packages = [
-    pkgs.kitty
   ];
 
   home.sessionPath = [
