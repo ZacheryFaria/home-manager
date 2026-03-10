@@ -177,8 +177,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "sindresorhus";
             repo = "pure";
-            rev = "v1.26.0"; # Use the latest version tag
-            sha256 = "1gah16673pzkbhkkiwh3rhcxzdkdnfy1z414r8qnl19sd0zv3501";
+            rev = "v1.27.1"; # Use the latest version tag
+            sha256 = "1619389e554f4b4f688747282ec0678eb2a7710184e9c504ca7cc33b64a48aaf";
           };
         }
       ];
