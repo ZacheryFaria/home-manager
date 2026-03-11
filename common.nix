@@ -48,6 +48,9 @@
     pkgs.fzf
     pkgs.tree
 
+    # markdown viewer
+    pkgs.glow
+
     # docker
     pkgs.colima
     pkgs.docker
