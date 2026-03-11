@@ -37,7 +37,7 @@
       yamllint
       yaml-language-server
       shellcheck
-      nodePackages.dockerfile-language-server-nodejs
+      dockerfile-language-server
       vscode-langservers-extracted # css, html, json LSPs
 
       # Treesitter
