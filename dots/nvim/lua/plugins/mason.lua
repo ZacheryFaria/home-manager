@@ -12,7 +12,9 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
-      ensure_installed = {},
+      ensure_installed = {
+        "ast-grep",
+      },
       auto_update = false,
       run_on_start = false,
     },

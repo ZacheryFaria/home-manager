@@ -1,4 +1,8 @@
 return {
   "zapling/mason-lock.nvim",
-  enabled = false, -- not needed when Mason doesn't install anything
+  init = function()
+    require("mason-lock").setup {
+      lockfile_path = vim.fn.stdpath "config" .. "/mason-lock.json",
+    }
+  end,
 }
