@@ -5,8 +5,8 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
-      -- Don't add Mason bin to PATH — Nix already provides everything
-      PATH = "skip",
+      -- Append Mason bin to PATH so system PATH (Nix) is checked first
+      PATH = "append",
     },
   },
   {

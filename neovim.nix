@@ -8,22 +8,29 @@
       # Lua
       lua-language-server
       stylua
+      selene
 
       # TypeScript / JavaScript
       vtsls
       eslint_d
       prettierd
+      graphql-language-service-cli
 
       # Go
       gopls
       delve
+      gotools # goimports
+      gotests
+      gci
 
       # Rust
       rust-analyzer
+      bacon
 
       # Python
       basedpyright
       ruff
+      python3Packages.autopep8
       python3Packages.debugpy
 
       # Haskell
@@ -32,13 +39,19 @@
 
       # Nix
       nixd
+      nil # nil LSP (rnix-lsp successor)
 
       # YAML / Shell / Docker
       yamllint
+      yamlfmt
       yaml-language-server
       shellcheck
       dockerfile-language-server
+      docker-compose-language-service
       vscode-langservers-extracted # css, html, json LSPs
+
+      # Protobuf
+      buf
 
       # Treesitter
       tree-sitter
