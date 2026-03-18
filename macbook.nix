@@ -10,6 +10,7 @@
 
   home.packages = [
     (pkgs.callPackage ./pkgs/cmux.nix {})
+    pkgs.kitty
   ];
 
   home.sessionPath = [
