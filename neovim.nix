@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, homeDir, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -61,5 +61,5 @@
   # Symlink directly to the source directory (not through Nix store)
   # so lazy-lock.json remains writable
   xdg.configFile."nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "/Users/zfaria/.config/home-manager/dots/nvim";
+    config.lib.file.mkOutOfStoreSymlink "${homeDir}/.config/home-manager/dots/nvim";
 }
