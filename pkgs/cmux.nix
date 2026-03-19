@@ -28,6 +28,8 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     runHook preInstall
     mkdir -p $out/Applications
     cp -r cmux.app $out/Applications/
+    /usr/bin/xattr -dr com.apple.quarantine $out/Applications/cmux.app
+    /usr/bin/codesign --force --deep --sign - $out/Applications/cmux.app
     runHook postInstall
   '';
 
