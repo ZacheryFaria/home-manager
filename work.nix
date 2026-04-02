@@ -16,6 +16,10 @@
     source /Users/zfaria/.aliases.sh
   '';
 
+  home.sessionVariables = {
+    HUSKY = 0;
+  };
+
   home.packages = [
     pkgs.grpcurl
     pkgs.golangci-lint
