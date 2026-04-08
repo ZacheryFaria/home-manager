@@ -21,7 +21,7 @@
       delve
       gotools # goimports
       gotests
-      gci
+
 
       # Rust
       rust-analyzer
