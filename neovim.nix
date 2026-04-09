@@ -1,9 +1,10 @@
-{ pkgs, config, homeDir, ... }:
+{ pkgs, config, homeDir, neovim-pin, ... }:
 {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     vimAlias = true;
+    package = neovim-pin.neovim-unwrapped;
     extraPackages = with pkgs; [
       # Lua
       lua-language-server
