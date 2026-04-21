@@ -1,4 +1,4 @@
-if not vim.g.ts_go_ls then return {} end
+-- if not vim.g.ts_go_ls then return {} end
 
 ---@type LazySpec
 return {
