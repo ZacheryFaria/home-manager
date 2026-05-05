@@ -47,6 +47,7 @@
     pkgs.tmux
     pkgs.fzf
     pkgs.tree
+    pkgs.ranger
 
     # markdown viewer
     pkgs.glow
