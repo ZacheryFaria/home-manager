@@ -40,7 +40,7 @@ return {
     -- all servers are installed via nix extraPackages, not mason
     servers = {
       "lua_ls",
-      "vtsls",
+      -- "vtsls",
       "gopls",
       "rust_analyzer",
       "basedpyright",
