@@ -4,7 +4,7 @@
 }:
 
 {
-  imports = [ ./macbook.nix ];
+  imports = [ ./darwin.nix ];
 
   home.shellAliases = {
     ib = "pnpm -r i && bazel configure";

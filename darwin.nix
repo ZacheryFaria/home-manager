@@ -1,4 +1,4 @@
-# used for any macbook (home, work, etc)
+# used for any mac (home, work, etc)
 {
   user,
   pkgs,
@@ -9,7 +9,8 @@
   imports = [ ./common.nix ];
 
   home.packages = [
-    (pkgs.callPackage ./pkgs/cmux.nix {})
+    (pkgs.callPackage ./pkgs/cmux.nix { })
+    pkgs.colima
   ];
 
   home.sessionPath = [

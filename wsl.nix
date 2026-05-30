@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./darwin.nix
+    ./linux.nix
     ./personal.nix
   ];
 }

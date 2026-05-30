@@ -1,7 +1,6 @@
-# common packages which may be installed on a non-macbook machine (i.e., a vps/linux box)
+# packages shared across all machines
 {
   pkgs,
-  claude-code,
   user,
   homeDir,
   ...
@@ -53,7 +52,6 @@
     pkgs.glow
 
     # docker
-    pkgs.colima
     pkgs.docker
 
     # nix

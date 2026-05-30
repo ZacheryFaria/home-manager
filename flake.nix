@@ -55,11 +55,24 @@
       homeConfigurations."fedora" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-        modules = [ ./common.nix ];
+        modules = [ ./linux.nix ];
 
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/home/zach";
+          neovim-pin = nixpkgs-neovim.legacyPackages.x86_64-linux;
+        };
+      };
+
+      homeConfigurations."wsl" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
+        modules = [ ./wsl.nix ];
+
+        extraSpecialArgs = {
+          user = "zach";
+          homeDir = "/home/zach";
+          claude-code = claude-code;
           neovim-pin = nixpkgs-neovim.legacyPackages.x86_64-linux;
         };
       };
