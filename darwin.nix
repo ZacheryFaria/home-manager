@@ -11,6 +11,7 @@
   home.packages = [
     (pkgs.callPackage ./pkgs/cmux.nix { })
     pkgs.colima
+    pkgs.bash
   ];
 
   home.sessionPath = [
