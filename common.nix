@@ -119,6 +119,11 @@
     # '';
   };
 
+  xdg.configFile."nix/nix.conf".text = ''
+    experimental-features = nix-command flakes
+    netrc-file = ${homeDir}/.config/nix/netrc
+  '';
+
   home.shellAliases = {
     ls = "ls --color=auto";
     lg = "lazygit";
@@ -199,7 +204,10 @@
       };
     };
 
-    fzf.enable = true;
+    fzf = {
+      enable = true;
+      enableNushellIntegration = false;
+    };
 
   };
 

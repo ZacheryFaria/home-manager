@@ -1,66 +1,89 @@
-{ pkgs, config, homeDir, neovim-pin, ... }:
+{ pkgs, lib, homeDir, neovim-pin, ... }:
+let
+  nvimSource = "${homeDir}/.config/home-manager/dots/nvim";
+  extraPackages = with pkgs; [
+    # Lua
+    lua-language-server
+    stylua
+    selene
+
+    # TypeScript / JavaScript
+    vtsls
+    eslint_d
+    prettierd
+    graphql-language-service-cli
+
+    # Go
+    gopls
+    delve
+    gotests
+
+    # Rust
+    rust-analyzer
+    bacon
+
+    # Python
+    basedpyright
+    ruff
+    python3Packages.autopep8
+    python3Packages.debugpy
+
+    # Haskell
+    haskell-language-server
+    ormolu
+
+    # Nix
+    nixd
+    nil # nil LSP (rnix-lsp successor)
+
+    # YAML / Shell / Docker
+    yamllint
+    yamlfmt
+    yaml-language-server
+    shellcheck
+    dockerfile-language-server
+    docker-compose-language-service
+    vscode-langservers-extracted # css, html, json LSPs
+
+    # Protobuf
+    buf
+
+    # Treesitter
+    tree-sitter
+  ];
+in
 {
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-    package = neovim-pin.neovim-unwrapped;
-    extraPackages = with pkgs; [
-      # Lua
-      lua-language-server
-      stylua
-      selene
+  home.packages = [ neovim-pin.neovim-unwrapped ] ++ extraPackages;
 
-      # TypeScript / JavaScript
-      vtsls
-      eslint_d
-      prettierd
-      graphql-language-service-cli
-
-      # Go
-      gopls
-      delve
-      gotools # goimports
-      gotests
-
-
-      # Rust
-      rust-analyzer
-      bacon
-
-      # Python
-      basedpyright
-      ruff
-      python3Packages.autopep8
-      python3Packages.debugpy
-
-      # Haskell
-      haskell-language-server
-      ormolu
-
-      # Nix
-      nixd
-      nil # nil LSP (rnix-lsp successor)
-
-      # YAML / Shell / Docker
-      yamllint
-      yamlfmt
-      yaml-language-server
-      shellcheck
-      dockerfile-language-server
-      docker-compose-language-service
-      vscode-langservers-extracted # css, html, json LSPs
-
-      # Protobuf
-      buf
-
-      # Treesitter
-      tree-sitter
-    ];
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
   };
 
-  # Symlink directly to the source directory (not through Nix store)
-  # so lazy-lock.json remains writable
-  xdg.configFile."nvim".source =
-    config.lib.file.mkOutOfStoreSymlink "${homeDir}/.config/home-manager/dots/nvim";
+  home.shellAliases = {
+    vim = "nvim";
+  };
+
+  # Keep Neovim config writable by linking directly to the repo checkout
+  # during activation instead of copying files into the store.
+  home.activation.linkRepoBackedNvim = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    target="$HOME/.config/nvim"
+    source="${nvimSource}"
+
+    mkdir -p "$HOME/.config"
+
+    if [ -L "$target" ] && [ "$(readlink "$target")" = "$source" ]; then
+      exit 0
+    fi
+
+    if [ -e "$target" ] || [ -L "$target" ]; then
+      backup="$HOME/.config/nvim.hm-backup"
+      if [ -e "$backup" ] || [ -L "$backup" ]; then
+        backup="$HOME/.config/nvim.hm-backup.$(date +%Y%m%d%H%M%S)"
+      fi
+      mv "$target" "$backup"
+    fi
+
+    ln -sfn "$source" "$target"
+  '';
 }
