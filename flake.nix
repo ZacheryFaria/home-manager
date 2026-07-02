@@ -5,7 +5,6 @@
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-neovim.url = "github:nixos/nixpkgs/4684fd6b0c01e4b7d99027a34c93c2e09ecafee2";
-    claude-code.url = "github:sadjow/claude-code-nix";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +16,6 @@
       nixpkgs,
       nixpkgs-neovim,
       home-manager,
-      claude-code,
       ...
     }:
     {
@@ -35,7 +33,6 @@
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/Users/zach";
-          claude-code = claude-code;
           neovim-pin = nixpkgs-neovim.legacyPackages.aarch64-darwin;
         };
       };
@@ -72,7 +69,6 @@
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/home/zach";
-          claude-code = claude-code;
           neovim-pin = nixpkgs-neovim.legacyPackages.x86_64-linux;
         };
       };
