@@ -1,4 +1,4 @@
-{ pkgs, lib, homeDir, neovim-pin, ... }:
+{ pkgs, lib, homeDir, ... }:
 let
   nvimSource = "${homeDir}/.config/home-manager/dots/nvim";
   extraPackages = with pkgs; [
@@ -8,7 +8,7 @@ let
     selene
 
     # TypeScript / JavaScript
-    vtsls
+    typescript-go
     eslint_d
     prettierd
     graphql-language-service-cli
@@ -27,10 +27,6 @@ let
     ruff
     python3Packages.autopep8
     python3Packages.debugpy
-
-    # Haskell
-    haskell-language-server
-    ormolu
 
     # Nix
     nixd
@@ -53,7 +49,7 @@ let
   ];
 in
 {
-  home.packages = [ neovim-pin.neovim-unwrapped ] ++ extraPackages;
+  home.packages = [ pkgs.neovim-unwrapped ] ++ extraPackages;
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -85,5 +81,9 @@ in
     fi
 
     ln -sfn "$source" "$target"
+  '';
+
+  home.activation.nvimSync = lib.hm.dag.entryAfter [ "linkRepoBackedNvim" ] ''
+    ${pkgs.neovim-unwrapped}/bin/nvim --headless "+Lazy! restore" "+MasonLockRestore" +qa 2>/dev/null || true
   '';
 }

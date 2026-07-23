@@ -4,7 +4,6 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-neovim.url = "github:nixos/nixpkgs/4684fd6b0c01e4b7d99027a34c93c2e09ecafee2";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +13,6 @@
   outputs =
     {
       nixpkgs,
-      nixpkgs-neovim,
       home-manager,
       ...
     }:
@@ -33,7 +31,6 @@
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/Users/zach";
-          neovim-pin = nixpkgs-neovim.legacyPackages.aarch64-darwin;
         };
       };
 
@@ -45,7 +42,6 @@
         extraSpecialArgs = {
           user = "zfaria";
           homeDir = "/Users/zfaria";
-          neovim-pin = nixpkgs-neovim.legacyPackages.aarch64-darwin;
         };
       };
 
@@ -57,7 +53,6 @@
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/home/zach";
-          neovim-pin = nixpkgs-neovim.legacyPackages.x86_64-linux;
         };
       };
 
@@ -69,7 +64,6 @@
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/home/zach";
-          neovim-pin = nixpkgs-neovim.legacyPackages.x86_64-linux;
         };
       };
     };

@@ -30,22 +30,16 @@ return {
         -- "lua_ls",
         "eslint_d",
         "eslint",
-        "vtsls",
       },
       timeout_ms = 1000, -- default format timeout
-      -- filter = function(client) -- fully override the default formatting function
-      --   return true
-      -- end
     },
     -- all servers are installed via nix extraPackages, not mason
     servers = {
       "lua_ls",
-      -- "vtsls",
       "gopls",
       "rust_analyzer",
       "basedpyright",
       "ruff",
-      "hls",
       "nixd",
       "yamlls",
       "cssls",
@@ -57,52 +51,12 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      vtsls = {
-        settings = {
-          vtsls = {
-            experimental = {
-              completion = {
-                enableServerSideFuzzyMatch = true,
-                entriesLimit = 20,
-              },
-            },
-          },
-          typescript = {
-            tsserver = {
-              maxTsServerMemory = 8192,
-              -- useSyntaxServer = "always",
-            },
-            preferences = {
-              includePackageJsonAutoImports = "off",
-              importModuleSpecifierEnding = "minimal",
-              importModuleSpecifier = "shortest",
-              jsxAttributeCompletionStyle = "braces",
-            },
-            inlayHints = {
-              parameterNames = { enabled = "literals" },
-              parameterTypes = { enabled = true },
-              variableTypes = { enabled = true },
-              propertyDeclarationTypes = { enabled = true },
-              functionLikeReturnTypes = { enabled = true },
-              enumMemberValues = { enabled = true },
-            },
-          },
-          javascript = {
-            preferences = {
-              importModuleSpecifierEnding = "minimal",
-              importModuleSpecifier = "shortest",
-              jsxAttributeCompletionStyle = "braces",
-            },
-          },
-        },
-      },
       cssmodules_ls = {
         capabilities = {
           definitionProvider = true,
         },
         excludePatterns = {
           "**/node_modules/**",
-          -- Add other patterns if needed
         },
       },
       cssls = {
@@ -125,7 +79,6 @@ return {
         -- condition will be resolved for each client on each execution and if it ever fails for all clients,
         -- the auto commands will be deleted for that buffer
         cond = "textDocument/codeLens",
-        -- cond = function(client, bufnr) return client.name == "lua_ls" end,
         -- list of auto commands to set
         {
           -- events to trigger
@@ -158,12 +111,6 @@ return {
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function
     -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
-    on_attach = function(client, bufnr)
-      -- Performance optimizations for vtsls
-      if client.name == "vtsls" then
-        -- Disable semantic tokens which can be costly
-        -- client.server_capabilities.semanticTokensProvider = nil
-      end
-    end,
+    on_attach = function(client, bufnr) end,
   },
 }
