@@ -3,7 +3,7 @@
 -- all tools are provided by Nix extraPackages on PATH.
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       -- Append Mason bin to PATH so system PATH (Nix) is checked first
       PATH = "append",
