@@ -29,7 +29,6 @@
     pkgs.jq
     pkgs.yq
     pkgs.nmap
-    pkgs.cloc
     pkgs.ripgrep
     pkgs.fd
     pkgs.htop
@@ -45,6 +44,7 @@
     pkgs.tmux
     pkgs.fzf
     pkgs.tree
+    pkgs.scc
     pkgs.ranger
 
     # markdown viewer
@@ -65,7 +65,7 @@
 
     # python
     pkgs.uv
-    pkgs.python313
+    pkgs.python314
 
     # node
     pkgs.nodejs_24
@@ -79,9 +79,6 @@
 
     # better, smarter, cd
     pkgs.zoxide
-
-    #
-    pkgs.openapi-generator-cli
 
     # cat with syntax
     pkgs.bat

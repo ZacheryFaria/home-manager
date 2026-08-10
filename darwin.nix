@@ -2,6 +2,7 @@
 {
   user,
   pkgs,
+  lib,
   ...
 }:
 
@@ -16,7 +17,7 @@
 
   programs.zsh = {
     enable = true;
-    initExtraFirst = ''
+    initContent = lib.mkBefore ''
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
       fi
