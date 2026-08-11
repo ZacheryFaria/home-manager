@@ -1,9 +1,8 @@
 # used for any mac (home, work, etc)
-{
-  user,
-  pkgs,
-  lib,
-  ...
+{ user
+, pkgs
+, lib
+, ...
 }:
 
 {

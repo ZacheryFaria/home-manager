@@ -20,7 +20,6 @@ let
 
     # Rust
     rust-analyzer
-    bacon
 
     # Python
     basedpyright
