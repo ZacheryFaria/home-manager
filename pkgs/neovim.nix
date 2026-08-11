@@ -1,4 +1,9 @@
-{ pkgs, lib, homeDir, ... }:
+{
+  pkgs,
+  lib,
+  homeDir,
+  ...
+}:
 let
   nvimSource = "${homeDir}/.config/home-manager/dots/nvim";
   extraPackages = with pkgs; [

@@ -1,8 +1,9 @@
 # packages shared across all machines
-{ pkgs
-, user
-, homeDir
-, ...
+{
+  pkgs,
+  user,
+  homeDir,
+  ...
 }:
 
 {
