@@ -20,8 +20,6 @@
   "ormolu": "0.8.1.1",
   "prettierd": "0.29.0",
   "pyproject-fmt": "2.27.0",
-  "ruff": "0.16.2",
-  "rust-analyzer": "2026-08-03",
   "selene": "0.31.0",
   "shellcheck": "v0.11.0",
   "some-sass-language-server": "2.3.8",
