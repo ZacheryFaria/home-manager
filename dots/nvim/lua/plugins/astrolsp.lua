@@ -47,7 +47,6 @@ return {
       "html",
       "jsonls",
       "dockerls",
-      "nil_ls",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields

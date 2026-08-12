@@ -45,7 +45,7 @@
         };
       };
 
-      homeConfigurations."fedora" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."linux" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
         modules = [ ./linux.nix ];
@@ -56,15 +56,5 @@
         };
       };
 
-      homeConfigurations."wsl" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
-
-        modules = [ ./wsl.nix ];
-
-        extraSpecialArgs = {
-          user = "zach";
-          homeDir = "/home/zach";
-        };
-      };
     };
 }

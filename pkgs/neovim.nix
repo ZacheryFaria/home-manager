@@ -34,7 +34,6 @@ let
 
     # Nix
     nixd
-    nil # nil LSP (rnix-lsp successor)
 
     # YAML / Shell / Docker
     yamllint
