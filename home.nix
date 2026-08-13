@@ -1,8 +1,0 @@
-{ ... }:
-
-{
-  imports = [
-    ./darwin.nix
-    ./personal.nix
-  ];
-}
