@@ -7,6 +7,7 @@
 let
   nvimSource = "${homeDir}/.config/home-manager/dots/nvim";
   extraPackages = with pkgs; [
+    lazygit
     # Lua
     lua-language-server
     stylua
