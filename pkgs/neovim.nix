@@ -18,6 +18,9 @@ let
     prettierd
     graphql-language-service-cli
 
+    nginx-language-server
+    nginx-config-formatter
+
     # Go
     gopls
     delve

@@ -3,7 +3,11 @@ return {
   opts = {
     formatters_by_ft = {
       nix = { "nixfmt" },
-      -- ... other formatters
+      nginx = { "nginxfmt" },
+      lua = { "stylua" },
+      python = { "ruff_format" },
+      yaml = { "yamlfmt" },
+      proto = { "buf" },
     },
   },
 }

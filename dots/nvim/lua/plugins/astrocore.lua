@@ -26,14 +26,9 @@ return {
     -- passed to `vim.filetype.add`
     filetypes = {
       -- see `:h vim.filetype.add` for usage
-      extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
       pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
+        ["docker%-compose.*%.ya?ml"] = "yaml.docker-compose",
+        ["compose.*%.ya?ml"] = "yaml.docker-compose",
       },
     },
     -- vim options can be configured here
