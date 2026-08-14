@@ -7,7 +7,10 @@
 }:
 
 {
-  # imports = [ ./pkgs/neovim.nix ];
+  imports = [
+    ./pkgs/nvim
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
@@ -26,7 +29,6 @@
   # environment.
   home.packages = [
     # self explanatory packages that are useful
-    pkgs.jujutsu
     pkgs.jq
     pkgs.yq
     pkgs.nmap
@@ -206,98 +208,6 @@
       enable = true;
       enableNushellIntegration = false;
     };
-
-    nixvim = {
-      enable = true;
-      opts = {
-        number = true; # Show line numbers
-        relativenumber = true; # Show relative line numbers
-
-        shiftwidth = 2; # Tab width should be 2
-      };
-
-      colorschemes.catppuccin.enable = true;
-      plugins = {
-        lualine.enable = true;
-        luasnip.enable = true;
-        conform-nvim = {
-          enable = true;
-          settings = {
-            format_on_save = {
-              timeout_ms = 500;
-              lsp_format = "fallback";
-            };
-          };
-        };
-
-        nix.enable = true;
-        treesitter.enable = true;
-
-        lsp = {
-          #inlayHints.enable = true;:
-          enable = true;
-
-          servers = {
-            nixd.enable = true;
-          };
-        };
-        blink-cmp = {
-          enable = true;
-          setupLspCapabilities = true;
-
-          settings = {
-            fuzzy.implementation = "rust";
-            snippets.preset = "luasnip";
-            completion = {
-              documentation.auto_show = true;
-              menu.border = "rounded";
-            };
-            sources.default = [
-              "lsp"
-              "path"
-              "snippets"
-            ]; # removed "buffer" text completion
-            sources.providers.lsp.override.get_completions.__raw = /* lua */ ''
-              function(original, context, callback)
-                            return original:get_completions(context, function(response)
-                              if vim.bo.filetype ~= "nix" or response == nil or #response.items > 0 then
-                                callback(response)
-                                return
-                              end
-
-                              response.is_incomplete_forward = true
-
-                              local bufnr = vim.api.nvim_get_current_buf()
-                              local changedtick = vim.api.nvim_buf_get_changedtick(bufnr)
-                              local cache = require "blink.cmp.sources.lsp.cache"
-                              for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr, name = "nixd" }) do
-                                cache.entries[client.id] = nil
-                              end
-
-                              callback(response)
-
-                              if vim.b.blink_nixd_retry_tick == changedtick then return end
-                              vim.b.blink_nixd_retry_tick = changedtick
-                              vim.defer_fn(function()
-                                if
-                                  vim.api.nvim_buf_is_valid(bufnr)
-                                  and vim.api.nvim_buf_get_changedtick(bufnr) == changedtick
-                                  and vim.bo.filetype == "nix"
-                                  and vim.fn.mode():sub(1, 1) == "i"
-                                then
-                                  require("blink.cmp").show { providers = { "lsp" } }
-                                end
-                              end, 150)
-                            end)
-                          end
-            '';
-            keymap.preset = "super-tab";
-            signature.enabled = true;
-          };
-        };
-      };
-    };
-
   };
 
   nixpkgs.config = {
