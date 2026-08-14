@@ -7,12 +7,14 @@
     ./blink-cmp.nix
     ./lsp.nix
     ./conform.nix
+    ./neo-tree.nix
   ];
 
   programs = {
     nixvim = {
       enable = true;
       globals.mapleader = " ";
+      colorschemes.catppuccin.enable = true;
 
       opts = {
         number = true; # Show line numbers
@@ -20,9 +22,7 @@
         shiftwidth = 2; # Tab width should be 2
       };
 
-      colorschemes.catppuccin.enable = true;
       plugins = {
-        neo-tree.enable = true;
         lualine.enable = true;
         luasnip.enable = true;
         nix.enable = true;
