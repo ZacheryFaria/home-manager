@@ -12,6 +12,7 @@
   programs = {
     nixvim = {
       enable = true;
+      globals.mapleader = " ";
 
       opts = {
         number = true; # Show line numbers
