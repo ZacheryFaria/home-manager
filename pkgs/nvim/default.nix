@@ -1,8 +1,4 @@
-# packages shared across all machines
 {
-  pkgs,
-  user,
-  homeDir,
   ...
 }:
 
@@ -16,6 +12,7 @@
   programs = {
     nixvim = {
       enable = true;
+
       opts = {
         number = true; # Show line numbers
         relativenumber = true; # Show relative line numbers
@@ -24,6 +21,7 @@
 
       colorschemes.catppuccin.enable = true;
       plugins = {
+        neo-tree.enable = true;
         lualine.enable = true;
         luasnip.enable = true;
         nix.enable = true;
