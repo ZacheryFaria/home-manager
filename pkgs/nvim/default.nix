@@ -24,6 +24,7 @@
 
       plugins = {
         lualine.enable = true;
+        which-key.enable = true;
         luasnip.enable = true;
         nix.enable = true;
         treesitter.enable = true;
