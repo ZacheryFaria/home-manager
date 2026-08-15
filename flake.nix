@@ -26,6 +26,7 @@
         # the path to your home.nix.
         modules = [
           ./home.nix
+          nixvim.homeModules.nixvim
         ];
 
         # Optionally use extraSpecialArgs
@@ -53,13 +54,15 @@
       homeConfigurations."linux" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-        modules = [ ./linux.nix ];
+        modules = [
+          ./linux.nix
+          nixvim.homeModules.nixvim
+        ];
 
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/home/zach";
         };
       };
-
     };
 }
