@@ -5,17 +5,30 @@
     # hack to get neo-tree to close when it is last buffer
     autoCmd = [
       {
-        event = [ "BufEnter" ];
+        event = [
+          "BufEnter"
+          "WinClosed"
+          "QuitPre"
+        ];
         pattern = [ "*" ];
         nested = true;
         callback.__raw = /* lua */ ''
           function()
-            if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == "neo-tree" then
               vim.schedule(function()
-                vim.cmd("quit!")
+                -- Get all valid, open windows in the current tab
+                local wins = vim.api.nvim_tabpage_list_wins(0)
+
+                if #wins == 1 then
+                  local buf = vim.api.nvim_win_get_buf(wins[1])
+                  local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
+
+                  -- If Neo-tree is the last window remaining, quit Neovim
+                  if ft == "neo-tree" then
+                    vim.cmd("qa")
+                  end
+                end
               end)
             end
-          end
         '';
       }
     ];
@@ -28,14 +41,19 @@
       enable = true;
 
       settings = {
-        eventHandlers = {
-          neo_tree_buffer_enter.__raw = /* lua */ ''
-            function()
-              vim.opt_local.number = true
-              vim.opt_local.relativenumber = true
-            end
-          '';
-        };
+        event_handlers = [
+          {
+            event = "neo_tree_buffer_enter";
+            handler = {
+              __raw = ''
+                function()
+                  vim.opt_local.number = true
+                  vim.opt_local.relativenumber = true
+                end
+              '';
+            };
+          }
+        ];
         closeIfLastWindow = true;
         sources = [
           "filesystem"
@@ -61,6 +79,8 @@
 
         window.mappings = {
           "<space>" = "none";
+          "l" = "open";
+          "h" = "close_node";
         };
       };
     };

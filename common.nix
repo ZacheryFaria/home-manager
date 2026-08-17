@@ -49,6 +49,7 @@
     pkgs.tree
     pkgs.scc
     pkgs.ranger
+    pkgs.prettierd
 
     # markdown viewer
     pkgs.glow

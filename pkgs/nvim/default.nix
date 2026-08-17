@@ -26,12 +26,16 @@
       plugins = {
         lualine.enable = true;
         luasnip.enable = true;
-        which-key.enable = true;
         nix.enable = true;
         lazygit.enable = true;
+        which-key.enable = true;
+        nvim-autopairs.enable = true;
 
+        ts-autotag.enable = true;
+        ts-comments.enable = true;
         treesitter = {
           enable = true;
+          highlight.enable = true;
           indent.enable = true;
           autoLoad = true;
         };
