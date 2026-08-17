@@ -8,6 +8,7 @@
     ./lsp.nix
     ./conform.nix
     ./neo-tree.nix
+    ./telescope.nix
   ];
 
   programs = {
@@ -27,8 +28,13 @@
         luasnip.enable = true;
         which-key.enable = true;
         nix.enable = true;
-        treesitter.enable = true;
-        telescope.enable = true;
+        lazygit.enable = true;
+
+        treesitter = {
+          enable = true;
+          indent.enable = true;
+          autoLoad = true;
+        };
       };
 
       keymaps = [
@@ -72,6 +78,30 @@
           action = "<C-w>h";
           options = {
             desc = "Go to left window (Backspace fallback)";
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>gg";
+          action = "<cmd>LazyGit<cr>";
+          options = {
+            desc = "Lazy Git Open";
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>gc";
+          action = "<cmd>LazyGitFilterCurrentFile<cr>";
+          options = {
+            desc = "Lazy Git Filter Current File";
+          };
+        }
+        {
+          mode = "n";
+          key = "<leader>gf";
+          action = "<cmd>LazyGitFilter<cr>";
+          options = {
+            desc = "Lazy Git Filter";
           };
         }
       ];
