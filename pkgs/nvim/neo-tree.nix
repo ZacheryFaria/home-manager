@@ -2,41 +2,11 @@
 {
 
   programs.nixvim = {
-    # hack to get neo-tree to close when it is last buffer
-    autoCmd = [
-      {
-        event = [
-          "BufEnter"
-          "WinClosed"
-          "QuitPre"
-        ];
-        pattern = [ "*" ];
-        nested = true;
-        callback.__raw = /* lua */ ''
-          function()
-              vim.schedule(function()
-                -- Get all valid, open windows in the current tab
-                local wins = vim.api.nvim_tabpage_list_wins(0)
-
-                if #wins == 1 then
-                  local buf = vim.api.nvim_win_get_buf(wins[1])
-                  local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
-
-                  -- If Neo-tree is the last window remaining, quit Neovim
-                  if ft == "neo-tree" then
-                    vim.cmd("qa")
-                  end
-                end
-              end)
-            end
-        '';
-      }
-    ];
-
     globals = {
       loaded_netrw = 1;
       loaded_netrwPlugin = 1;
     };
+
     plugins.neo-tree = {
       enable = true;
 
@@ -67,12 +37,16 @@
           bindToCwd = true;
           useLibuvFileWatcher = true;
           followCurrentFile.enabled = true;
-          hijackNetrwBehavior = "open_default";
+          hijackNetrwBehavior = "open_current";
         };
 
         defaultComponentConfigs = {
           gitStatus = {
             symbols = {
+              added = "✚";
+              modified = "";
+              deleted = "✖";
+              untracked = "";
             };
           };
         };
@@ -97,7 +71,15 @@
       {
         mode = "n";
         key = "<leader>o";
-        action = "<cmd>Neotree focus<cr>";
+        action.__raw = /* lua */ ''
+          function()
+            if vim.bo.filetype == "neo-tree" then
+              vim.cmd.wincmd "p"
+            else
+              vim.cmd.Neotree "focus"
+            end
+          end
+        '';
         options = {
           silent = true;
           desc = "Explorer NeoTree (root dir)";

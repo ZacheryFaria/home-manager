@@ -50,6 +50,7 @@
     pkgs.scc
     pkgs.ranger
     pkgs.prettierd
+    pkgs.nerd-fonts.jetbrains-mono
 
     # markdown viewer
     pkgs.glow
@@ -153,6 +154,8 @@
   home.sessionPath = [
     "${homeDir}/go/bin"
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs = {
     # Let Home Manager install and manage itself.

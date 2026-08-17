@@ -67,6 +67,7 @@
       };
     }
 
+    # buffers
     {
       mode = "n";
       key = "<leader>bb";
@@ -81,6 +82,32 @@
       action = "<cmd>bd<cr>";
       options = {
         desc = "Close buffer";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>c";
+      action = "<cmd>bd<cr>";
+      options = {
+        desc = "Close buffer";
+      };
+    }
+
+    # toggleterm
+    {
+      mode = "n";
+      key = "<leader>th";
+      action = "<cmd>ToggleTerm size=10 direction=horizontal<cr>";
+      options = {
+        desc = "Open term horizontal";
+      };
+    }
+    {
+      mode = "n";
+      key = "<leader>tv";
+      action = "<cmd>ToggleTerm size=10 direction=vertical<cr>";
+      options = {
+        desc = "Open term vertical";
       };
     }
 

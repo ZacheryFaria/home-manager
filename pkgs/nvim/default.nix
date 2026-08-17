@@ -11,7 +11,7 @@ in
     ./lsp.nix
     ./conform.nix
     ./neo-tree.nix
-    ./telescope.nix
+    ./fzf.nix
   ];
 
   programs = {
@@ -40,6 +40,7 @@ in
         which-key.enable = true;
         nvim-autopairs.enable = true;
         rainbow.enable = true;
+        indent-blankline.enable = true;
 
         ts-autotag.enable = true;
         ts-comments.enable = true;
@@ -48,6 +49,16 @@ in
           highlight.enable = true;
           indent.enable = true;
           autoLoad = true;
+        };
+        toggleterm.enable = true;
+        web-devicons.enable = true;
+        auto-session = {
+          enable = true;
+          settings = {
+            useGitBranch = true;
+            pre_save_cmds = [ "Neotree close" ];
+            post_restore_cmds = [ "Neotree filesystem show" ];
+          };
         };
       };
     };
