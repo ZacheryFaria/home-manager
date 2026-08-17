@@ -21,6 +21,14 @@
           desc = "Grep files (live_grep)";
         };
       }
+      {
+        mode = "n";
+        key = "<leader>fo";
+        action = "<cmd>Telescope live_grep<cr>";
+        options = {
+          desc = "Grep files (live_grep)";
+        };
+      }
     ];
   };
 
