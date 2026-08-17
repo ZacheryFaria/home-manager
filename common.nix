@@ -118,11 +118,6 @@
     # '';
   };
 
-  # xdg.configFile."nix/nix.conf".text = ''
-  #   experimental-features = nix-command flakes
-  #   netrc-file = ${homeDir}/.config/nix/netrc
-  # '';
-
   home.shellAliases = {
     ls = "ls --color=auto";
     lg = "lazygit";
@@ -152,7 +147,6 @@
     # hack to disable the exceutino time for pure (https://github.com/sindresorhus/pure/issues/496)
     PURE_CMD_MAX_EXEC_TIME = "1000000000000000000";
     GIT_MERGE_AUTOEDIT = "no";
-
   };
 
   home.sessionPath = [
@@ -161,9 +155,7 @@
 
   programs = {
     # Let Home Manager install and manage itself.
-    home-manager = {
-      enable = true;
-    };
+    home-manager.enable = true;
     zsh = {
       enable = true;
       initContent = ''
@@ -181,8 +173,8 @@
           src = pkgs.fetchFromGitHub {
             owner = "sindresorhus";
             repo = "pure";
-            rev = "v1.27.1"; # Use the latest version tag
-            sha256 = "1619389e554f4b4f688747282ec0678eb2a7710184e9c504ca7cc33b64a48aaf";
+            rev = "v1.28.3"; # Use the latest version tag
+            sha256 = "sha256-ZNi0ruTX9HRELXq1yvTm+StOuQ0UZgK6toMSgwqSD9A=";
           };
         }
       ];
