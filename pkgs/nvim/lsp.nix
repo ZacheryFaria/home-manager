@@ -8,6 +8,8 @@
 
       servers = {
         nixd.enable = true;
+        basedpyright.enable = true;
+
       };
     };
   };
