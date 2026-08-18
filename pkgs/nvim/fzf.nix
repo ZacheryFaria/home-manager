@@ -1,11 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 {
 
   programs.nixvim = {
     plugins.fzf-lua = {
       enable = true;
 
-      # Loads the default keymaps for finding files, buffers, etc.
+      settings = {
+        winopts.preview.default = "bat";
+      };
+
       keymaps = {
         "<leader><space>" = "files";
         "<leader>ff" = "files";

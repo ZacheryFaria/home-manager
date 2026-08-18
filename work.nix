@@ -23,7 +23,7 @@
   home.packages = [
     pkgs.grpcurl
     pkgs.golangci-lint
-    pkgs.eslint
+    pkgs.eslint_d
     pkgs.buf
     pkgs.icu
     pkgs.icu.dev

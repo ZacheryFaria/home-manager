@@ -6,17 +6,16 @@
       enable = true;
       settings = {
         format_on_save = {
-          timeout_ms = 500;
+          timeout_ms = 3000;
           lsp_format = "fallback";
         };
 
         formatters_by_ft =
           let
-            javascriptFormatters = {
-              __unkeyed-1 = "prettierd";
-              __unkeyed-2 = "prettier";
-              stop_after_first = true;
-            };
+            javascriptFormatters = [
+              "eslint_d"
+              "prettierd"
+            ];
           in
           {
             nix = [ "nixfmt" ];
@@ -24,6 +23,8 @@
             typescript = javascriptFormatters;
             javascriptreact = javascriptFormatters;
             typescriptreact = javascriptFormatters;
+            css = [ "prettierd" ];
+            scss = [ "prettierd" ];
             "*" = [ "codespell" ];
             "_" = [ "trim_whitespace" ];
           };

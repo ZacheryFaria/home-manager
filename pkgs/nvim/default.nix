@@ -26,9 +26,12 @@ in
       };
 
       opts = {
-        number = true; # Show line numbers
-        relativenumber = true; # Show relative line numbers
-        shiftwidth = 2; # Tab width should be 2
+        number = true;
+        relativenumber = true;
+        shiftwidth = 2;
+        tabstop = 2;
+        expandtab = true;
+        smartindent = true;
       };
 
       plugins = {
