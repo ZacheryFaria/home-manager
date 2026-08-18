@@ -20,8 +20,8 @@
               if vim.bo[buf].filetype == "neo-tree" then
                 vim.schedule(function()
                   local cur_win = vim.api.nvim_get_current_win()
-                  vim.cmd("Neotree reveal")
-                  vim.api.nvim_set_current_win(cur_win)
+                  pcall(vim.cmd, "Neotree reveal")
+                  pcall(vim.api.nvim_set_current_win, cur_win)
                 end)
                 return
               end
