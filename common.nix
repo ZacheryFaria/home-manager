@@ -1,14 +1,27 @@
 # packages shared across all machines
 {
-  nixpkgs,
   pkgs,
   user,
   homeDir,
   ...
 }:
 
+let
+  purePlugin = {
+    name = "pure";
+    src = pkgs.fetchFromGitHub {
+      owner = "sindresorhus";
+      repo = "pure";
+      rev = "v1.28.3"; # Use the latest version tag
+      sha256 = "sha256-ZNi0ruTX9HRELXq1yvTm+StOuQ0UZgK6toMSgwqSD9A=";
+    };
+  };
+in
 {
-  imports = [ ./pkgs/neovim.nix ];
+  imports = [
+    ./pkgs/nvim
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = user;
@@ -27,7 +40,6 @@
   # environment.
   home.packages = [
     # self explanatory packages that are useful
-    pkgs.jujutsu
     pkgs.jq
     pkgs.yq
     pkgs.nmap
@@ -48,6 +60,8 @@
     pkgs.tree
     pkgs.scc
     pkgs.ranger
+    pkgs.prettierd
+    pkgs.nerd-fonts.jetbrains-mono
 
     # markdown viewer
     pkgs.glow
@@ -117,11 +131,6 @@
     # '';
   };
 
-  # xdg.configFile."nix/nix.conf".text = ''
-  #   experimental-features = nix-command flakes
-  #   netrc-file = ${homeDir}/.config/nix/netrc
-  # '';
-
   home.shellAliases = {
     ls = "ls --color=auto";
     lg = "lazygit";
@@ -151,18 +160,17 @@
     # hack to disable the exceutino time for pure (https://github.com/sindresorhus/pure/issues/496)
     PURE_CMD_MAX_EXEC_TIME = "1000000000000000000";
     GIT_MERGE_AUTOEDIT = "no";
-
   };
 
   home.sessionPath = [
     "${homeDir}/go/bin"
   ];
 
+  fonts.fontconfig.enable = true;
+
   programs = {
     # Let Home Manager install and manage itself.
-    home-manager = {
-      enable = true;
-    };
+    home-manager.enable = true;
     zsh = {
       enable = true;
       initContent = ''
@@ -174,17 +182,7 @@
         [[ $- == *i* ]] && [ -z "$DISABLE_ZOXIDE" ] && eval "$(zoxide init --cmd cd zsh)"
       '';
 
-      plugins = [
-        {
-          name = "pure";
-          src = pkgs.fetchFromGitHub {
-            owner = "sindresorhus";
-            repo = "pure";
-            rev = "v1.27.1"; # Use the latest version tag
-            sha256 = "1619389e554f4b4f688747282ec0678eb2a7710184e9c504ca7cc33b64a48aaf";
-          };
-        }
-      ];
+      plugins = [ purePlugin ];
     };
 
     git = {
@@ -195,23 +193,17 @@
         user.email = "zacheryfaria@gmail.com";
         push.autoSetupRemote = true;
         alias = {
-          ci = "commit";
           co = "checkout";
-          s = "status -sb";
-          lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
         };
       };
     };
 
     fzf = {
       enable = true;
-      enableNushellIntegration = false;
     };
-
   };
 
   nixpkgs.config = {
     allowUnfree = true;
   };
-
 }

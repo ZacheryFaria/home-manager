@@ -4,6 +4,8 @@
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixvim.url = "github:nix-community/nixvim";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +15,7 @@
   outputs =
     {
       nixpkgs,
+      nixvim,
       home-manager,
       ...
     }:
@@ -24,6 +27,7 @@
         # the path to your home.nix.
         modules = [
           ./home.nix
+          nixvim.homeModules.nixvim
         ];
 
         # Optionally use extraSpecialArgs
@@ -37,7 +41,10 @@
       homeConfigurations."zfaria" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
-        modules = [ ./work.nix ];
+        modules = [
+          ./work.nix
+          nixvim.homeModules.nixvim
+        ];
 
         extraSpecialArgs = {
           user = "zfaria";
@@ -48,13 +55,15 @@
       homeConfigurations."linux" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
-        modules = [ ./linux.nix ];
+        modules = [
+          ./linux.nix
+          nixvim.homeModules.nixvim
+        ];
 
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/home/zach";
         };
       };
-
     };
 }

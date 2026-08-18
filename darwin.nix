@@ -11,7 +11,6 @@
 
   home.packages = [
     pkgs.colima
-    pkgs.bash
   ];
 
   programs.zsh = {
