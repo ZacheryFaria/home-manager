@@ -7,6 +7,30 @@
       loaded_netrwPlugin = 1;
     };
 
+    autoCmd = [
+      {
+        event = [ "BufEnter" ];
+        callback.__raw = ''
+          function()
+            if vim.bo.filetype == "neo-tree" or vim.bo.buftype ~= "" then
+              return
+            end
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+              local buf = vim.api.nvim_win_get_buf(win)
+              if vim.bo[buf].filetype == "neo-tree" then
+                vim.schedule(function()
+                  local cur_win = vim.api.nvim_get_current_win()
+                  vim.cmd("Neotree reveal")
+                  vim.api.nvim_set_current_win(cur_win)
+                end)
+                return
+              end
+            end
+          end
+        '';
+      }
+    ];
+
     plugins.neo-tree = {
       enable = true;
 
@@ -32,6 +56,9 @@
           "git_status"
           "document_symbols"
         ];
+        source_selector = {
+          winbar = true;
+        };
         popupBorderStyle = "rounded"; # “NC”, “double”, “none”, “rounded”, “shadow”, “single”, “solid” or raw lua code
 
         filesystem = {
