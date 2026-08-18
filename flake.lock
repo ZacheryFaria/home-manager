@@ -21,6 +21,22 @@
         "type": "github"
       }
     },
+    "gruvbox-material-ghostty": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735409490,
+        "narHash": "sha256-9qoQpzWHADIhyUOrlzkpGbRgq4L5AywYjONdFFaXsBo=",
+        "owner": "ZacheryFaria",
+        "repo": "gruvbox-material-ghostty",
+        "rev": "c16d730de3864b130e61a63ff900b3588351dd6f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ZacheryFaria",
+        "repo": "gruvbox-material-ghostty",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -95,6 +111,7 @@
     },
     "root": {
       "inputs": {
+        "gruvbox-material-ghostty": "gruvbox-material-ghostty",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim"

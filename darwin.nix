@@ -3,6 +3,7 @@
   user,
   pkgs,
   lib,
+  gruvbox-material-ghostty,
   ...
 }:
 
@@ -12,6 +13,16 @@
   home.packages = [
     pkgs.colima
   ];
+
+  home.file.".config/ghostty/themes".source = "${gruvbox-material-ghostty}/themes";
+
+  home.file.".config/ghostty/config".text = ''
+    font-size = 14
+    font-thicken
+    font-thicken-strength = 20
+    minimum-contrast = 3
+    theme = gruvbox-material-hard-dark
+  '';
 
   programs.zsh = {
     enable = true;
