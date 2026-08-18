@@ -93,6 +93,10 @@
           jsonls.enable = true;
           eslint.enable = true;
 
+          # golang
+          gopls.enable = true;
+          golangci_lint_ls.enable = true;
+
           # docker
           docker_compose_language_service.enable = true;
           dockerls.enable = true;
