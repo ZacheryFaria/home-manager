@@ -1,4 +1,10 @@
-{ ... }:
+{
+  homeDir,
+  lib,
+  pkgs,
+  user,
+  ...
+}:
 {
 
   programs.nixvim = {
@@ -55,7 +61,22 @@
         servers = {
           # nix
           nil_ls.enable = true;
-          nixd.enable = true;
+          nixd = {
+            enable = true;
+            settings = {
+              nixpkgs = {
+                # Evaluates your explicit flake inputs to resolve core packages (e.g. pkgs.stdenv)
+                expr = "import (builtins.getFlake \"${homeDir}/.config/home-manager\").inputs.nixpkgs { }";
+              };
+              formatting.command = [ (lib.getExe pkgs.nixfmt) ];
+              options = {
+                # Deep autocompletion engine for Home Manager modules
+                home-manager = {
+                  expr = "(builtins.getFlake \"${homeDir}/.config/home-manager\").homeConfigurations.${user}.options";
+                };
+              };
+            };
+          };
 
           # python
           basedpyright.enable = true;

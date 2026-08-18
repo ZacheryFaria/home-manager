@@ -25,6 +25,7 @@
           }
         ];
         closeIfLastWindow = true;
+        enableGitStatus = true;
         sources = [
           "filesystem"
           "buffers"
@@ -43,10 +44,14 @@
         defaultComponentConfigs = {
           gitStatus = {
             symbols = {
-              added = "✚";
-              modified = "";
-              deleted = "✖";
-              untracked = "";
+              added = ""; # Clean Git Plus/Added icon (Codepoint: u+f457)
+              modified = ""; # The standard modified dot you can see
+              deleted = ""; # Clean Git Minus/Removed icon (Codepoint: u+f458)
+              untracked = ""; # Clean question mark
+              renamed = "➜"; # Clean arrow
+              unstaged = "✗"; # Swaps empty checkbox square to an 'X'
+              staged = "✓"; # Swaps filled checkbox square to a checkmark
+              conflict = "";
             };
           };
         };

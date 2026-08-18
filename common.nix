@@ -6,6 +6,17 @@
   ...
 }:
 
+let
+  purePlugin = {
+    name = "pure";
+    src = pkgs.fetchFromGitHub {
+      owner = "sindresorhus";
+      repo = "pure";
+      rev = "v1.28.3"; # Use the latest version tag
+      sha256 = "sha256-ZNi0ruTX9HRELXq1yvTm+StOuQ0UZgK6toMSgwqSD9A=";
+    };
+  };
+in
 {
   imports = [
     ./pkgs/nvim
@@ -171,17 +182,7 @@
         [[ $- == *i* ]] && [ -z "$DISABLE_ZOXIDE" ] && eval "$(zoxide init --cmd cd zsh)"
       '';
 
-      plugins = [
-        {
-          name = "pure";
-          src = pkgs.fetchFromGitHub {
-            owner = "sindresorhus";
-            repo = "pure";
-            rev = "v1.28.3"; # Use the latest version tag
-            sha256 = "sha256-ZNi0ruTX9HRELXq1yvTm+StOuQ0UZgK6toMSgwqSD9A=";
-          };
-        }
-      ];
+      plugins = [ purePlugin ];
     };
 
     git = {
@@ -192,22 +193,17 @@
         user.email = "zacheryfaria@gmail.com";
         push.autoSetupRemote = true;
         alias = {
-          ci = "commit";
           co = "checkout";
-          s = "status -sb";
-          lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
         };
       };
     };
 
     fzf = {
       enable = true;
-      enableNushellIntegration = false;
     };
   };
 
   nixpkgs.config = {
     allowUnfree = true;
   };
-
 }
