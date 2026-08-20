@@ -11,6 +11,11 @@
       flake = false;
     };
 
+    pure = {
+      url = "github:sindresorhus/pure/v1.28.3";
+      flake = false;
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +28,7 @@
       nixvim,
       home-manager,
       gruvbox-material-ghostty,
+      pure,
       ...
     }:
     {
@@ -41,7 +47,7 @@
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/Users/zach";
-          inherit gruvbox-material-ghostty;
+          inherit gruvbox-material-ghostty pure;
         };
       };
 
@@ -56,7 +62,7 @@
         extraSpecialArgs = {
           user = "zfaria";
           homeDir = "/Users/zfaria";
-          inherit gruvbox-material-ghostty;
+          inherit gruvbox-material-ghostty pure;
         };
       };
 
@@ -71,6 +77,7 @@
         extraSpecialArgs = {
           user = "zach";
           homeDir = "/home/zach";
+          inherit pure;
         };
       };
     };

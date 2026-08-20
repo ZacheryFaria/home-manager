@@ -7,34 +7,16 @@
       loaded_netrwPlugin = 1;
     };
 
-    autoCmd = [
-      {
-        event = [ "BufEnter" ];
-        callback.__raw = ''
-          function()
-            if vim.bo.filetype == "neo-tree" or vim.bo.buftype ~= "" then
-              return
-            end
-            for _, win in ipairs(vim.api.nvim_list_wins()) do
-              local buf = vim.api.nvim_win_get_buf(win)
-              if vim.bo[buf].filetype == "neo-tree" then
-                vim.schedule(function()
-                  local cur_win = vim.api.nvim_get_current_win()
-                  pcall(vim.cmd, "Neotree reveal")
-                  pcall(vim.api.nvim_set_current_win, cur_win)
-                end)
-                return
-              end
-            end
-          end
-        '';
-      }
-    ];
-
     plugins.neo-tree = {
       enable = true;
 
       settings = {
+        openFilesDoNotReplaceTypes = [
+          "terminal"
+          "Trouble"
+          "trouble"
+          "qf" # Quickfix windows
+        ];
         event_handlers = [
           {
             event = "neo_tree_buffer_enter";
@@ -64,8 +46,17 @@
         filesystem = {
           bindToCwd = true;
           useLibuvFileWatcher = true;
-          followCurrentFile.enabled = true;
-          hijackNetrwBehavior = "open_current";
+          hijackNetrwBehavior = "open_default";
+          followCurrentFile = {
+            enabled = true; # This automatically reveals the file if the tree is open
+            leaveDirsOpen = false; # Optional: closes other folders when switching files
+          };
+        };
+
+        buffers = {
+          followCurrentFile = {
+            enabled = true;
+          };
         };
 
         defaultComponentConfigs = {
@@ -87,6 +78,7 @@
           "<space>" = "none";
           "l" = "open";
           "h" = "close_node";
+          "q" = "close_window";
         };
       };
     };

@@ -109,12 +109,30 @@
         "type": "github"
       }
     },
+    "pure": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1784206983,
+        "narHash": "sha256-ZNi0ruTX9HRELXq1yvTm+StOuQ0UZgK6toMSgwqSD9A=",
+        "owner": "sindresorhus",
+        "repo": "pure",
+        "rev": "89c9e30a38d3d35457bcc58b43ea6c28ae56934b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sindresorhus",
+        "ref": "v1.28.3",
+        "repo": "pure",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "gruvbox-material-ghostty": "gruvbox-material-ghostty",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "pure": "pure"
       }
     },
     "systems": {

@@ -3,18 +3,14 @@
   pkgs,
   user,
   homeDir,
+  pure,
   ...
 }:
 
 let
   purePlugin = {
     name = "pure";
-    src = pkgs.fetchFromGitHub {
-      owner = "sindresorhus";
-      repo = "pure";
-      rev = "v1.28.3"; # Use the latest version tag
-      sha256 = "sha256-ZNi0ruTX9HRELXq1yvTm+StOuQ0UZgK6toMSgwqSD9A=";
-    };
+    src = pure;
   };
 in
 {
