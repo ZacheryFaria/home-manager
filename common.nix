@@ -130,7 +130,7 @@ in
   home.shellAliases = {
     ls = "ls --color=auto";
     lg = "lazygit";
-    ccusage = "npx ccusage";
+    clauded = "claude --dangerously-skip-permissions";
   };
 
   home.shell.enableZshIntegration = true;
