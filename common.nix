@@ -62,6 +62,9 @@ in
     # markdown viewer
     pkgs.glow
 
+    # TUI for managing parallel AI coding agents
+    (pkgs.callPackage ./pkgs/canopy { })
+
     # docker
     pkgs.docker
 
