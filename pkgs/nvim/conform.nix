@@ -19,6 +19,7 @@
           in
           {
             nix = [ "nixfmt" ];
+            nginx = [ "nginxfmt" ];
             javascript = javascriptFormatters;
             typescript = javascriptFormatters;
             javascriptreact = javascriptFormatters;

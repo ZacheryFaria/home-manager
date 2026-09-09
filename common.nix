@@ -57,6 +57,7 @@ in
     pkgs.scc
     pkgs.ranger
     pkgs.prettierd
+    pkgs.nginx-config-formatter
     pkgs.nerd-fonts.jetbrains-mono
 
     # markdown viewer
@@ -134,6 +135,9 @@ in
     ls = "ls --color=auto";
     lg = "lazygit";
     clauded = "claude --dangerously-skip-permissions";
+    # sudo resets PATH via secure_path and HOME to /root, so neither the
+    # nixvim-wrapped binary nor its config would be found otherwise
+    svim = "sudo -E \"$(command -v nvim)\"";
   };
 
   home.shell.enableZshIntegration = true;
