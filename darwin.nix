@@ -33,6 +33,35 @@
     '';
   };
 
+  programs.obsidian = {
+    enable = true;
+
+    vaults.notes.target = "Documents/Obsidian";
+
+    defaultSettings = {
+      communityPlugins = [
+        pkgs.obsidianPlugins.dataview
+        pkgs.obsidianPlugins.vim-yank-highlight
+        pkgs.obsidianPlugins.excalidraw
+      ];
+    };
+
+    defaultSettings.app = {
+      alwaysUpdateLinks = true;
+      spellcheck = true;
+    };
+
+    defaultSettings.corePlugins = [
+      "backlink"
+      "bookmarks"
+      "daily-notes"
+      "file-explorer"
+      "global-search"
+      "templates"
+      "graph"
+    ];
+  };
+
   home.sessionPath = [
     "/Users/${user}/.local/bin"
     "/Users/${user}/bin"

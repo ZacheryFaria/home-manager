@@ -11,6 +11,11 @@
       flake = false;
     };
 
+    obsidian-extensions = {
+      url = "github:karaolidis/nix-obsidian-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     pure = {
       url = "github:sindresorhus/pure/v1.28.3";
       flake = false;
@@ -28,12 +33,18 @@
       nixvim,
       home-manager,
       gruvbox-material-ghostty,
+      obsidian-extensions,
       pure,
       ...
     }:
     {
       homeConfigurations."zach" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          overlays = [
+            obsidian-extensions.overlays.default
+          ];
+        };
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
@@ -52,7 +63,12 @@
       };
 
       homeConfigurations."zfaria" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          overlays = [
+            obsidian-extensions.overlays.default
+          ];
+        };
 
         modules = [
           ./work.nix
