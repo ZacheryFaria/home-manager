@@ -42,7 +42,7 @@
       communityPlugins = [
         pkgs.obsidianPlugins.dataview
         pkgs.obsidianPlugins.vim-yank-highlight
-        pkgs.obsidianPlugins.excalidraw
+        pkgs.obsidianPlugins.obsidian-excalidraw-plugin
       ];
     };
 
