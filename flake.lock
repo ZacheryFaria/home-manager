@@ -117,11 +117,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1789118243,
-        "narHash": "sha256-69iyjarVsaEOf0lII9wOGTxrEn05Z9RCpaXjYMhF/mk=",
+        "lastModified": 1789465688,
+        "narHash": "sha256-gfSfZRETJN9IS8aEm8cUoimqgMf1xVB9FogHD8orBpQ=",
         "owner": "karaolidis",
         "repo": "nix-obsidian-extensions",
-        "rev": "9c568dee3b12e57084a15309ee8b8de7ce2d28d2",
+        "rev": "465eae4b6890382c8bc1f415c266b0a0a190e223",
         "type": "github"
       },
       "original": {
