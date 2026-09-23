@@ -43,6 +43,8 @@
         pkgs.obsidianPlugins.dataview
         pkgs.obsidianPlugins.vim-yank-highlight
         pkgs.obsidianPlugins.obsidian-excalidraw-plugin
+        pkgs.obsidianPlugins.obsidian-kanban
+        pkgs.obsidianPlugins.table-editor-obsidian
       ];
     };
 
