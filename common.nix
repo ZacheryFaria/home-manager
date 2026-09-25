@@ -59,6 +59,7 @@ in
     pkgs.prettierd
     pkgs.nginx-config-formatter
     pkgs.nerd-fonts.jetbrains-mono
+    pkgs.mosh
 
     # markdown viewer
     pkgs.glow
