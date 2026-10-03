@@ -12,6 +12,7 @@
 
   home.packages = [
     pkgs.colima
+    pkgs.ghostty-bin
   ];
 
   home.file.".config/ghostty/themes".source = "${gruvbox-material-ghostty}/themes";
