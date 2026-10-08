@@ -61,6 +61,7 @@ in
     pkgs.nerd-fonts.jetbrains-mono
     pkgs.bun
     pkgs.mosh
+    pkgs.shellcheck
 
     # markdown viewer
     pkgs.glow
