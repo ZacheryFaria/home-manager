@@ -34,37 +34,6 @@
     '';
   };
 
-  programs.obsidian = {
-    enable = true;
-
-    vaults.notes.target = "Documents/Obsidian";
-
-    defaultSettings = {
-      communityPlugins = [
-        pkgs.obsidianPlugins.dataview
-        pkgs.obsidianPlugins.vim-yank-highlight
-        pkgs.obsidianPlugins.obsidian-excalidraw-plugin
-        pkgs.obsidianPlugins.obsidian-kanban
-        pkgs.obsidianPlugins.table-editor-obsidian
-      ];
-    };
-
-    defaultSettings.app = {
-      alwaysUpdateLinks = true;
-      spellcheck = true;
-    };
-
-    defaultSettings.corePlugins = [
-      "backlink"
-      "bookmarks"
-      "daily-notes"
-      "file-explorer"
-      "global-search"
-      "templates"
-      "graph"
-    ];
-  };
-
   home.sessionPath = [
     "/Users/${user}/.local/bin"
     "/Users/${user}/bin"
