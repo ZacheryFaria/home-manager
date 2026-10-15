@@ -87,7 +87,7 @@
           };
 
           # ts / js / html
-          tsgo.enable = true;
+          tsc.enable = true;
           cssls.enable = true;
           html.enable = true;
           jsonls.enable = true;
